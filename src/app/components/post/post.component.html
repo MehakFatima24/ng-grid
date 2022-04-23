@@ -1,2 +1,10 @@
-<h3 *ngIf="!clicked"> PostId: {{postId}}</h3>
-<h3 *ngIf="clicked"> UserId: {{userId}}</h3>
+<div class="flip-box">
+  <div [ngClass]="clicked ? 'flip-box-inner clicked' : 'flip-box-inner'">
+    <div class="flip-box-front">
+      <h3><fa-icon [icon]="faClipboard"></fa-icon> Post: {{ postId }}</h3>
+    </div>
+    <div class="flip-box-back">
+      <h3><fa-icon [icon]="faUser"></fa-icon> User: {{ userId }}</h3>
+    </div>
+  </div>
+</div>

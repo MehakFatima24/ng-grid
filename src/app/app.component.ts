@@ -29,12 +29,13 @@ export class AppComponent implements OnInit {
         this.snack.open(error, 'close');
       }).bind(this),
     });
+
   }
 
-  setState(){
-    this.posts.forEach(post=>{
+  setState() {
+    this.posts.forEach((post) => {
       post.clicked = false;
-    })
+    });
   }
 
   tileClicked(item: GridItemModel) {
