@@ -4,7 +4,7 @@ import { environment } from 'src/environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class HttpService {
-  constructor(private http: HttpClient) {}
+  constructor(public http: HttpClient) {}
   get(url: any) {
     return this.http.get(environment.baseUrl + url);
   }

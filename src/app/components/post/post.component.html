@@ -1,4 +1,4 @@
-<div class="flip-box">
+<div class="flip-box"  (click)="toggleClick()">
   <div [ngClass]="clicked ? 'flip-box-inner clicked' : 'flip-box-inner'">
     <div class="flip-box-front">
       <h3><fa-icon [icon]="faClipboard"></fa-icon> Post: {{ postId }}</h3>

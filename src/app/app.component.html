@@ -2,13 +2,9 @@
   <div *ngFor="let item of posts; let i = index">
     <div>
       <div>
-        <mat-grid-tile
-          [ngClass]="item.clicked ? 'clicked' : ''"
-          (click)="tileClicked(item)"
-          ><app-post
+        <mat-grid-tile><app-post
             [userId]="item.userId"
             [postId]="item.id"
-            [clicked]="item.clicked"
           ></app-post
         ></mat-grid-tile>
       </div>

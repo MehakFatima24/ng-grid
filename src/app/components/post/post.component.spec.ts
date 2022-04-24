@@ -8,9 +8,8 @@ describe('PostComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PostComponent ]
-    })
-    .compileComponents();
+      declarations: [PostComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -21,5 +20,11 @@ describe('PostComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should toggle clicked when tile is clicked', () => {
+    component.clicked = false;
+    component.toggleClick();
+    expect(component.clicked).toBeTruthy();
   });
 });

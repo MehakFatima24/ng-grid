@@ -3,5 +3,4 @@ export class GridItemModel {
   id: number = 0;
   title: string = '';
   body: string = '';
-  clicked: boolean = false;
 }
