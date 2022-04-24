@@ -13,13 +13,9 @@ import { Subscription } from 'rxjs';
 export class AppComponent implements OnInit {
   title = 'NG Grid';
   posts: GridItemModel[] = [];
-  rows: number = 0;
-  columns: number = 0;
+  public columns: any = AppConfiguration.columns;
   subscriptions: Subscription[] = [];
-  constructor(public grid: GridService, public snack: MatSnackBar) {
-    this.rows = AppConfiguration.rows;
-    this.columns = AppConfiguration.columns;
-  }
+  constructor(public grid: GridService, public snack: MatSnackBar) {}
   /**
    * This hook is called when the component is initialized.
    *

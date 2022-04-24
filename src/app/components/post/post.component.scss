@@ -32,13 +32,13 @@
 }
 
 /* Style the back side */
-.flip-box-back {
+.flip-box-front {
   background-color: #263744;
   color: #95b5cb;
 }
 
 /* Style the front side */
-.flip-box-front {
+.flip-box-back {
   background-color: #7395ae;
   color: #232627;
   transform: rotateY(180deg);
