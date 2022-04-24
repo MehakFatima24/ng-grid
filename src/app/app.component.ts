@@ -1,43 +1,40 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { GridService } from './services/grid/grid.service';
-import { GridItemModel } from './models/grid-item.model';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { GridItem } from './models/grid-item.model';
 import { AppConfiguration } from 'src/assets/config';
-import { Subscription } from 'rxjs';
+import { Subscription, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
   title = 'NG Grid';
-  posts: GridItemModel[] = [];
-  public columns: any = AppConfiguration.columns;
+  public posts$: Observable<GridItem[]> | undefined;
+  public columns: number = AppConfiguration.columns;
   subscriptions: Subscription[] = [];
-  constructor(public grid: GridService, public snack: MatSnackBar) {}
+  constructor(public grid: GridService ) {}
   /**
    * This hook is called when the component is initialized.
    *
-   * It fetches the posts and renders them, and displays the error in case request fails.
+   * It fetches the posts and renders them.
    */
   ngOnInit(): void {
-    this.subscriptions.push(
-      this.grid.getAllPosts().subscribe({
-        next: ((res: any) => {
-          this.posts = res;
-        }).bind(this),
-        error: ((error: any) => {
-          this.snack.open(error.message, 'close');
-        }).bind(this),
-      })
-    );
+    this.posts$ = this.grid.getAllPosts();
+    this.grid.init();
   }
 
+
   /**
-   * This hook is called when the component is destroyed, it unsubscribes to the observer to avoid any memory leaks.
+   * This method is used with *ngFor to track the data and avoid recreation of DOM.
+   * 
+   * @param index 
+   * @param post 
+   * @returns Post ID
    */
-  ngOnDestroy() {
-    this.subscriptions.forEach((subscription) => subscription.unsubscribe());
+  trackByPostId(index: number, post: GridItem): number {
+    return post.id;
   }
 }

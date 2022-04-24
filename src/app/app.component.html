@@ -1,5 +1,6 @@
 <mat-grid-list cols="{{columns}}" rowHeight="fit">
-  <div *ngFor="let item of posts; let i = index">
+  <!-- using async pipe so we don't have to subscribe -->
+  <div *ngFor="let item of posts$  | async; let i = index ; trackBy:trackByPostId">
     <div>
       <div>
         <mat-grid-tile><app-post
