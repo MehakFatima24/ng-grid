@@ -11,7 +11,7 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  title = 'grid-app';
+  title = 'NG Grid';
   posts: GridItemModel[] = [];
   rows: number = 0;
   columns: number = 0;

@@ -27,10 +27,10 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'grid-app'`, () => {
+  it(`should have as title 'NG Grid'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('grid-app');
+    expect(app.title).toEqual('NG Grid');
   });
 
   it('should call unsubscribe when the component is destroyed', () => {
